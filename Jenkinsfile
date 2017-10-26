@@ -16,7 +16,8 @@ node {
         }
     }
 
-def DOCKER_HUB_ACCOUNT = 'adideletos'
+def DOCKER_HUB_ACCOUNT = 'crmaic'
+// ILoveDocker123
 def DOCKER_IMAGE_NAME = 'go-example-webserver'
 
   echo 'Building Docker image'
@@ -36,6 +37,17 @@ def DOCKER_IMAGE_NAME = 'go-example-webserver'
       docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
             app.push()
       }
+      
+          def K8S_DEPLOYMENT_NAME = 'go-example-webserver'
+
+    stage("Deploy") 
+    echo "Deploying image"
+    docker.image('smesch/kubectl').inside{
+        withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
+            sh "kubectl --kubeconfig=$KUBECONFIG set image deployment/${K8S_DEPLOYMENT_NAME} ${K8S_DEPLOYMENT_NAME}=${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}"
+        }
+    }
     
 }
+
 
