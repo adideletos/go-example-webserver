@@ -17,7 +17,7 @@ node {
     }
 
 def DOCKER_HUB_ACCOUNT = 'sascha69'
-## ILoveDocker123
+// ILoveDocker123
 def DOCKER_IMAGE_NAME = 'go-example-webserver'
 
   echo 'Building Docker image'
