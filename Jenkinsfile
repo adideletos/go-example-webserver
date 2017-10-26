@@ -34,7 +34,6 @@ def DOCKER_HUB_ACCOUNT = 'adideletos'
     echo 'Pushing Docker Image'
     docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
         app.push()
-        }
     }
 }
 
