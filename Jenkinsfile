@@ -17,7 +17,6 @@ node {
     }
 
 def DOCKER_HUB_ACCOUNT = 'crmaic'
-// ILoveDocker123
 def DOCKER_IMAGE_NAME = 'go-example-webserver'
 
   echo 'Building Docker image'
@@ -44,6 +43,7 @@ def DOCKER_IMAGE_NAME = 'go-example-webserver'
     echo "Deploying image"
     docker.image('smesch/kubectl').inside{
         withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
+	sh "docker -t ${DOCKER_IMAGE_NAME} ${DOCKER_IMAGE_NAME}:production"
             sh "kubectl --kubeconfig=$KUBECONFIG set image deployment/${K8S_DEPLOYMENT_NAME} ${K8S_DEPLOYMENT_NAME}=${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}"
         }
     }

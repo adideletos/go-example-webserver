@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: go-example-webserver
-          image: adideletos/go-example-webserver
+          image: crmaic/go-example-webserver
           ports:
             - containerPort: 8080
