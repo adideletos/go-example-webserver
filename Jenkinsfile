@@ -20,9 +20,9 @@ def DOCKER_HUB_ACCOUNT = 'adideletos'
 def DOCKER_IMAGE_NAME = 'go-example-webserver'
 
   echo 'Building Docker image'
-  stage('BuildImage') {
+  stage('BuildImage') 
   def app = docker.build("${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}", '.')
-}
+
 
     echo 'Testing Docker image'
     stage("test image") {
@@ -36,5 +36,6 @@ def DOCKER_IMAGE_NAME = 'go-example-webserver'
       docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
             app.push()
       }
+    
 }
 
