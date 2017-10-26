@@ -16,7 +16,7 @@ node {
         }
     }
 
-def DOCKER_HUB_ACCOUNT = '<docker-hub-username>'
+def DOCKER_HUB_ACCOUNT = 'adideletos'
   def DOCKER_IMAGE_NAME = 'go-example-webserver'
 
   echo 'Building Docker image'
