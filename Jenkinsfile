@@ -16,11 +16,7 @@ node {
         }
     }
 
-<<<<<<< HEAD
 def DOCKER_HUB_ACCOUNT = 'crmaic'
-=======
-def DOCKER_HUB_ACCOUNT = 'sascha69'
->>>>>>> 5ea28c31fea18987fe179861dbd6e181e1ea41bd
 // ILoveDocker123
 def DOCKER_IMAGE_NAME = 'go-example-webserver'
 
